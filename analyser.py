@@ -16,7 +16,7 @@ class Analyser(object):
             pass
 
     def timing_string(self, call):
-        return "%.3fs %d calls" % call['timings']
+        return "%.3fs %d calls" % (call['timings'][1], call['timings'][0])
 
     def loop(self):
         print RED + 'qq. Quit' + ENDC
