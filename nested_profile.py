@@ -27,6 +27,13 @@ class Profile(object):
         finally:
             sys.setprofile(None)
 
+    def runctx(self, cmd, globals, locals):
+        sys.setprofile(self.trace_dispatch)
+        try:
+            exec cmd in globals, locals
+        finally:
+            sys.setprofile(None)
+
     def trace_dispatch(self, frame, event, arg):
         t = self.timer()
 

@@ -36,6 +36,13 @@ class Profile(profile_orig.Profile):
         finally:
             self.TallyTimings()
 
+    def runctx(self, cmd, globals, locals):
+        self._setup()
+        try:
+            return profile_orig.Profile.runctx(self, cmd, globals, locals)
+        finally:
+            self.TallyTimings()
+
     dispatch = profile_orig.Profile.dispatch
 
     def SwitchTasklet(self, task_0, task_1, t):
